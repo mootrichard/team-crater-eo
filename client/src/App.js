@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link } from 'react-router-dom';
+
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
+)
+
+const Login = () => (
+  <div>
+    <h2>Login</h2>
+  </div>
+)
 
 class App extends Component {
   state = {users: []}
@@ -14,19 +29,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <h1>Users</h1>
-        {this.state.users.map(user =>
-          <div key={user.id}>{user.username}</div>
-        )}
-      </div>
+        <Router>
+          <div className="App">
+            <nav>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/login">Login</Link></li>
+            </nav>
+            
+            <Route exact path="/" component={Home} />
+            <Route path="/login" component={Login} />
+          </div>
+        </Router>
     );
   }
 }
