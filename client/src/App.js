@@ -3,7 +3,8 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Route,
-  Link } from 'react-router-dom';
+  Link,
+ 	Redirect} from 'react-router-dom';
 
 const Home = () => (
   <div>
@@ -35,7 +36,7 @@ class App extends Component {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/login">Login</Link></li>
             </nav>
-            
+
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
           </div>
