@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class InputField extends Component {
-
   constructor(props) {
     super(props);
 
@@ -13,6 +12,17 @@ class InputField extends Component {
     this.updateState = this.updateState.bind(this);
 
   };
+
+  static defaultProps = {
+    placeholder: ''
+  }
+
+	static propTypes = {
+		type: PropTypes.string.isRequired,
+		name: PropTypes.string.isRequired,
+		label: PropTypes.string,
+		placeholder: PropTypes.string
+	}
 
   updateState(e) {
     this.setState({data: e.target.value});
@@ -28,16 +38,5 @@ class InputField extends Component {
     );
   }
 }
-
-InputField.propTypes = {
-  type: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  placeholder: PropTypes.string
-};
-
-InputField.defaultProps = {
-  placeholder: ''
-};
 
 export default InputField;
