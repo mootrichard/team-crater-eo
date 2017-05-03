@@ -3,18 +3,12 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
- 	Redirect} from 'react-router-dom';
+  Link} from 'react-router-dom';
+import Login from './Components/Login';
 
 const Home = () => (
   <div>
     <h2>Home</h2>
-  </div>
-)
-
-const Login = () => (
-  <div>
-    <h2>Login</h2>
   </div>
 )
 
