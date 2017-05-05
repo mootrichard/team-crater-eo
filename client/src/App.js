@@ -4,7 +4,9 @@ import {
   BrowserRouter as Router,
   Route,
   Link} from 'react-router-dom';
-import Login from './Components/Login';
+import { Provider } from 'react-redux';
+import store from './store';
+import LoginForm from './Components/LoginForm';
 
 const Home = () => (
   <div>
@@ -24,6 +26,7 @@ class App extends Component {
 
   render() {
     return (
+      <Provider store={store}>
         <Router>
           <div className="App">
             <nav>
@@ -32,9 +35,10 @@ class App extends Component {
             </nav>
 
             <Route exact path="/" component={Home} />
-            <Route path="/login" component={Login} />
+            <Route path="/login" component={LoginForm} />
           </div>
         </Router>
+      </Provider>
     );
   }
 }
