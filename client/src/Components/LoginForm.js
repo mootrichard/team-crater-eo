@@ -3,8 +3,13 @@ import { Field, reduxForm } from 'redux-form';
 
 const LoginForm  = (props) => {
 	const { handleSubmit, pristine, submitting } = props;
+	const authenticate = () => {
+		fetch("/users")
+		.then(res=> res.json())
+		.then(users => alert(JSON.stringify(users, null, 2)));
+	};
 	return(
-			<form onSubmit={handleSubmit} >
+			<form onSubmit={handleSubmit(authenticate)} >
 				<div>
 					<label>Username: </label>
 					<Field
