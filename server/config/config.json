@@ -1,0 +1,13 @@
+{
+  "development": {
+    "use_env_variable": "DATABASE_URL"
+  },
+  "test": {
+    "username": "postgres",
+    "password": null,
+    "database": "eo-crm-test",
+    "host": "localhost",
+    "port": 32768,
+    "dialect": "postgres"
+  }
+}
