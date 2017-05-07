@@ -22,3 +22,45 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+nav li {
+  display: inline;
+  list-style-type: none;
+  float: left;
+}
+
+nav a {
+  display: block;
+  padding: 8px;
+}
+
+.master-form-container{
+    max-width: 400px;
+    padding: 8px;
+    margin: 5px auto;
+}
+
+.master-form-container input[type="text"],
+.master-form-container input[type="date"],
+.master-form-container input[type="email"],
+.master-form-container label {
+    margin-bottom: 8px;
+}
+
+.master-form-container input[type="checkbox"],
+.master-form-container input[type="radio"],
+.master-form-container label {
+    display: inline-block;
+}
+
+.master-form-container input[type="text"],
+.master-form-container input[type="date"],
+.master-form-container input[type="email"],
+.master-form-container textarea,
+.master-form-container select {
+    border: none;
+    padding: 8px;
+    width: 100%;
+    background-color: #e8eeef;
+    color:#8a97a0;
+}
