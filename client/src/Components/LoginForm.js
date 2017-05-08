@@ -3,10 +3,17 @@ import { Field, reduxForm } from 'redux-form';
 
 const LoginForm  = (props) => {
 	const { handleSubmit, pristine, submitting } = props;
-	const authenticate = () => {
-		fetch("/users")
+	const authenticate = (formData) => {
+		fetch("/login", {
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			method: 'POST',
+			body: JSON.stringify(formData)
+		})
 		.then(res=> res.json())
-		.then(users => alert(JSON.stringify(users, null, 2)));
+		.then(login => alert(JSON.stringify(login, null, 2)));
 	};
 	return(
 			<form onSubmit={handleSubmit(authenticate)} >
