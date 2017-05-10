@@ -37,4 +37,4 @@ npm-debug.log
 
 # Environment
 .env
-.tern-project
+server/config/config.json

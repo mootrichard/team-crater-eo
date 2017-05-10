@@ -1,18 +1,33 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('Reference', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      email: {
+      first_name: {
         type: Sequelize.STRING
       },
-      password: {
-        type: Sequelize.CHKPASS
+      last_name: {
+        type: Sequelize.STRING
+      },
+      phone: {
+        type: Sequelize.INT
+      },
+      years_known: {
+        type: Sequelize.INT
+      },
+      notes: {
+        type: Sequelize.TEXT
+      },
+      business: {
+        type: Sequelize.BOOLEAN
+      },
+      personal: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -22,17 +37,17 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      userTypesId: {
+      clientId: {
         type: Sequelize.INTEGER,
-        onDelete: 'SET NULL',
+        onDelete: 'CASCADE',
         references: {
-          model: 'UserTypes',
+          model: 'Client',
           key: 'id'
         }
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('Reference');
   }
 };
