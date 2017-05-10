@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        Address.belongsToMany(models.Client, {
-          through: "ClientAddress"
-        })
+        Address.hasOne(models.Client);
+        Address.hasOne(models.EducationDetail);
+        Address.hasOne(models.AlternateContact);
       }
     }
   });

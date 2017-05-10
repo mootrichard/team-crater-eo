@@ -135,7 +135,23 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      addressId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'SET NULL',
+        references: {
+          model: 'Address',
+          key: 'id'
+        },
+      },
+      jobDeveloperId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'SET NULL',
+        references: {
+          model: 'JobDeveloper',
+          key: 'id'
+        },
+      },
     });
   },
   down: (queryInterface, Sequelize) => {

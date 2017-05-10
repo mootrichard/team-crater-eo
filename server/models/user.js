@@ -6,9 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        User.belongsTo(models.UserTypes, {
-          onDelete: 'SET NULL'
-        });
+        // associations go here
       }
     }
   });

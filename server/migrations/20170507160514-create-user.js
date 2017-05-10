@@ -21,6 +21,14 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      userTypesId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'SET NULL',
+        references: {
+          model: 'UserTypes',
+          key: 'id'
+        }
       }
     });
   },

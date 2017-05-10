@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        References.hasOne(models.Address);
         References.belongsTo(models.Client, {
           onDelete: 'CASCADE'
         });
