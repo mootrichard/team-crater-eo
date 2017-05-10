@@ -15,10 +15,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       phone: {
-        type: Sequelize.INT
+        type: Sequelize.INTEGER
       },
       years_known: {
-        type: Sequelize.INT
+        type: Sequelize.INTEGER
       },
       notes: {
         type: Sequelize.TEXT
