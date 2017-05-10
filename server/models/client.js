@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        Client.hasMany(models.References);
+        Client.hasMany(models.Reference);
         Client.hasMany(models.AlternateContact);
         Client.hasMany(models.EmploymentDetail);
         Client.hasMany(models.EducationDetail);
