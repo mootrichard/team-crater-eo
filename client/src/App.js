@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import MasterForm from './Components/MasterForm.js'
 import {
   BrowserRouter as Router,
   Route,
@@ -15,15 +16,6 @@ const Home = () => (
 )
 
 class App extends Component {
-  state = {users: []}
-
-  // This is just testing the Users route to make sure its working
-  componentDidMount() {
-    fetch('/users')
-      .then(res => res.json())
-      .then(users => this.setState({ users }));
-  }
-
   render() {
     return (
       <Provider store={store}>
@@ -32,10 +24,12 @@ class App extends Component {
             <nav>
               <li><Link to="/">Home</Link></li>
               <li><Link to="/login">Login</Link></li>
+              <li><Link to="/masterform">Master Form</Link></li>
             </nav>
 
             <Route exact path="/" component={Home} />
             <Route path="/login" component={LoginForm} />
+            <Route path="/masterform" component={MasterForm} />
           </div>
         </Router>
       </Provider>
