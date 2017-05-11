@@ -33,4 +33,8 @@ npm-debug.log
 .DS_Store
 .idea
 
-.tern-project
+# Environment
+
+# Environment
+.env
+server/config/config.json
