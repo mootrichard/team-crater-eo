@@ -1,4 +1,4 @@
-let validator = require("email-validator");
+let emailValidator = require("email-validator");
 let owasp = require('owasp-password-strength-test');
 let bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -14,7 +14,7 @@ module.exports = {
       res.status(400).send(result.errors);
       return;
     }
-    if (!validator.validate(req.body.email)) {
+    if (!emailValidator.validate(req.body.email)) {
       res.status(400).send('invalid email');
       return;
     }

@@ -10,12 +10,14 @@ module.exports = {
         .then(job => res.status(201).send(job))
         .catch(error => res.status(400).send(error));
   },
+
   getAll(req, res) {
     return Job
         .all()
         .then(jobs => res.status(200).send(jobs))
         .catch(error => res.status(400).send(error));
   },
+
   getOne(req, res) {
     return Job
         .findByPrimary(req.params.jobId)
