@@ -32,3 +32,9 @@ npm-debug.log
 # IDE / OS
 .DS_Store
 .idea
+
+# Environment
+
+# Environment
+.env
+server/config/config.json
