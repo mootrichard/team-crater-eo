@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: (models) => {
-        User.belongsTo(models.UserType);
+        User.belongsTo(models.UserType, { foreignKey: 'userTypeId' });
       }
     }
   });

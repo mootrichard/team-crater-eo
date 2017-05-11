@@ -1,5 +1,6 @@
 const jobsController = require('../controllers').jobs;
 const usersController = require('../controllers').users;
+const userTypesController = require('../controllers').userTypes;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -13,4 +14,7 @@ module.exports = (app) => {
 
   // Users
   app.post('/api/users', usersController.create);
+
+  // User Types
+  app.post('/api/userTypes', userTypesController.create);
 };
