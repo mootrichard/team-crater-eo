@@ -1,13 +1,32 @@
-const User = require('./models').Job;
+let validator = require("email-validator");
+let owasp = require('owasp-password-strength-test');
+let bcrypt = require('bcrypt');
+const saltRounds = 10;
+const myPlaintextPassword = 's0/\/\P4$$w0rD';
+const someOtherPlaintextPassword = 'not_bacon';
+
+const User = require('../models').Job;
 
 module.exports = {
   create(req, res) {
-    const password  = req.body.password;
+    const result  = owasp.test(req.body.password);
+    if (result.errors.length > 0) {
+      res.status(400).send(result.errors);
+      return;
+    }
+    if (!validator.validate(req.body.email)) {
+      res.status(400).send('invalid email');
+      return;
+    }
 
-    return User
-        .create({
-          email: req.body.email,
-          password: req.body.password
-        })
+    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+      return User
+          .create({
+            email: req.body.email,
+            password: req.body.password
+          })
+          .then(user => res.status(201).send(user))
+          .catch(error => res.status(400).send(error));
+    });
   }
 };

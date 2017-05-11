@@ -1,36 +1,24 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('EmploymentDetail', {
+    return queryInterface.createTable('AlternateContact', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      organization: {
+      first_name: {
         type: Sequelize.STRING
       },
-      job_title: {
+      last_name: {
         type: Sequelize.STRING
       },
-      location: {
-        type: Sequelize.STRING
+      phone: {
+        type: Sequelize.INTEGER
       },
-      job_duties: {
+      relationship: {
         type: Sequelize.TEXT
-      },
-      pay: {
-        type: Sequelize.STRING
-      },
-      leaving_reason: {
-        type: Sequelize.TEXT
-      },
-      start: {
-        type: Sequelize.DATEONLY
-      },
-      end: {
-        type: Sequelize.DATEONLY
       },
       createdAt: {
         allowNull: false,
@@ -40,17 +28,25 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
+      addressId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'SET NULL',
+        references: {
+          model: 'Addresses',
+          key: 'id'
+        },
+      },
       clientId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references: {
-          model: 'Client',
+          model: 'Clients',
           key: 'id'
         }
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('EmploymentDetail');
+    return queryInterface.dropTable('AlternateContacts');
   }
 };
