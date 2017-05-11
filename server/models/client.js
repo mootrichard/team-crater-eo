@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Client = sequelize.define('Client', {
     first_name: { type: DataTypes.STRING },
     last_name: { type: DataTypes.STRING },
-    phone: { type: DataTypes.INTEGER },
+    phone: { type: DataTypes.STRING },
     dob: { type: DataTypes.DATEONLY },
     gender: { type: DataTypes.STRING },
     race: { type: DataTypes.STRING },

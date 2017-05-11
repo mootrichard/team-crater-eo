@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     first_name: { type: DataTypes.STRING },
     last_name: { type: DataTypes.STRING },
     email: { type: DataTypes.STRING },
-    phone: { type: DataTypes.INTEGER }
+    phone: { type: DataTypes.STRING }
   }, {
     classMethods: {
       associate: (models) => {
