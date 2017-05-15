@@ -113,7 +113,7 @@ const MasterForm = (props) => {
 			win.document.getElementsById('emp_date').innerHTML = '<b>' + data.emp_start + ' - ' + data.emp_end + '</b>';
 		}
 		if (data.org_name && data.loc) {
-			win.document.getElementById('prof_exp').innerHTML = '<b>' + data.org_name + ' - ' + data.location + ' - ' + data.pos_name + '</b>';
+			win.document.getElementById('prof_exp').innerHTML = '<h4>PROFESSIONAL EXPERIENCE</h4><b>' + data.org_name + ' - ' + data.loc + ' - ' + data.pos_name + '</b>';
 		}
 		if (data.tasks) {
 			win.document.getElementById('responsibilities').innerHTML = '<li>' + data.tasks + '</li>';
