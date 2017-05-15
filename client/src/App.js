@@ -10,7 +10,7 @@ import store from './store';
 import LoginForm from './Components/LoginForm';
 
 const Home = () => (
-  <div>
+  <div className="container">
     <h2>Home</h2>
   </div>
 )
@@ -20,16 +20,24 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div className="App">
-            <nav>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/login">Login</Link></li>
-              <li><Link to="/masterform">Master Form</Link></li>
+          <div>
+            <nav className="navbar navbar-inverse navbar-fixed-top">
+              <div className="container">
+                <div id="navbar" className="collapse navbar-collapse">
+                  <ul className="nav navbar-nav">
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/masterform">Master Form</Link></li>
+                  </ul>
+                </div>
+              </div>
             </nav>
 
-            <Route exact path="/" component={Home} />
-            <Route path="/login" component={LoginForm} />
-            <Route path="/masterform" component={MasterForm} />
+            <div className="container text-center">
+              <Route exact path="/" component={Home} />
+              <Route path="/login" component={LoginForm} />
+              <Route path="/masterform" component={MasterForm} />
+            </div>
           </div>
         </Router>
       </Provider>
