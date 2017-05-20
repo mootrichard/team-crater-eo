@@ -16,22 +16,28 @@ const LoginForm  = (props) => {
 		.then(login => alert(JSON.stringify(login, null, 2)));
 	};
 	return(
-			<form onSubmit={handleSubmit(authenticate)} >
-				<div>
-					<label>Username: </label>
-					<Field
-						type="text"
-						component="input"
-						name="username" />
+			<form className="form-horizontal" onSubmit={handleSubmit(authenticate)} >
+				<div className="form-group">
+					<label className="col-sm-2 control-label" >Username: </label>
+					<div className="col-sm-6">
+						<Field
+							type="text"
+							component="input"
+							name="username"
+							className="form-control col-sm-10" />
+					</div>
 				</div>
-				<div>
-					<label>Password: </label>
-					<Field
-						type="password"
-						component="input"
-						name="password" />
+				<div className="form-group">
+					<label className="col-sm-2 control-label">Password: </label>
+					<div className="col-sm-6">
+						<Field
+							type="password"
+							component="input"
+							name="password"
+							className="form-control"/>
+					</div>
 				</div>
-				<button type="submit" disabled={pristine || submitting}>Submit</button>
+				<button className="btn btn-default" type="submit" disabled={pristine || submitting}>Submit</button>
 			</form>
 	)
 }

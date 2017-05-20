@@ -21,6 +21,7 @@ coverage
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
+public/*
 
 # Dependency directory
 # https://docs.npmjs.com/cli/shrinkwrap#caveats
@@ -32,6 +33,7 @@ npm-debug.log
 # IDE / OS
 .DS_Store
 .idea
+.tern-project
 
 # Environment
 
