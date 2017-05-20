@@ -26,11 +26,8 @@ module.exports = {
       hs_diploma: {
         type: Sequelize.BOOLEAN
       },
-      college_degree: {
-        type: Sequelize.BOOLEAN
-      },
       certificate: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING
       },
       diploma_type: {
         type: Sequelize.STRING

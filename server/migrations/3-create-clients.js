@@ -32,6 +32,12 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
+      odl: {
+        type: Sequelize.STRING
+      },
+      foodhc: {
+        type: Sequelize.BOOLEAN
+      },
       registration_date: {
         type: Sequelize.DATEONLY
       },
@@ -59,11 +65,23 @@ module.exports = {
       part_time: {
         type: Sequelize.BOOLEAN
       },
-      daysofweek: {
-        type: Sequelize.STRING
-      },
       hours: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
+      },
+      expectedwage: {
+        type: Sequelize.FLOAT
+      },
+      daysofweek: {
+        type: Sequelize.JSON
+      },
+      willworkdays: {
+        type: Sequelize.BOOLEAN
+      },
+      willworkswing: {
+        type: Sequelize.BOOLEAN
+      },
+      willworknoc: {
+        type: Sequelize.BOOLEAN
       },
       inside: {
         type: Sequelize.BOOLEAN
@@ -74,7 +92,7 @@ module.exports = {
       geo_area: {
         type: Sequelize.STRING
       },
-      work_exp: {
+      no_work_exp: {
         type: Sequelize.BOOLEAN
       },
       benefits_prof: {

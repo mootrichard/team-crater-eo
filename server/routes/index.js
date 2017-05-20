@@ -2,6 +2,7 @@ const jobsController = require('../controllers').jobs;
 const usersController = require('../controllers').users;
 const userTypesController = require('../controllers').userTypes;
 const jobDevelopersController = require('../controllers').jobDevelopers;
+const clientsController = require('../controllers').clients;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -23,4 +24,7 @@ module.exports = (app) => {
   app.post('/api/jobDevelopers', jobDevelopersController.create);
   app.get('/api/jobDevelopers/:jobDeveloperId', jobDevelopersController.getOne);
   app.get('/api/jobDevelopers', jobDevelopersController.getAll);
+
+  // Clients
+  app.post('/api/clients', clientsController.create);
 };

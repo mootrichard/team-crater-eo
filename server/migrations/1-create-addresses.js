@@ -8,10 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      street_num: {
+      street_address_one: {
         type: Sequelize.STRING
       },
-      street_name: {
+      street_address_two: {
         type: Sequelize.STRING
       },
       apt_num: {

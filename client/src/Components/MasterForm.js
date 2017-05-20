@@ -124,7 +124,7 @@ const MasterForm = (props) => {
 		//win.document.body.innerHTML = note.gender;
 	};
 	const postForm = (formData) => {
-		fetch("/masterform", {
+		fetch("/api/clients", {
 			headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json'
@@ -132,7 +132,7 @@ const MasterForm = (props) => {
 			method: 'POST',
 			body: JSON.stringify(formData)
 		})
-		.then(res=> res.json())
+		.then(res => res.json())
 		.then(masterform => alert(JSON.stringify(masterform, null, 2)))
 		.then(resume =>	createResume(JSON.parse(JSON.stringify(formData))));
 	};
@@ -202,6 +202,14 @@ const MasterForm = (props) => {
 	  					<label htmlFor="street2">Street Address 2</label>
 		  				<Field name="street2" component="input" type="text"/>
 						</div>
+						<div>
+							<label htmlFor="po_box">PO Box</label>
+							<Field name="po_box" component="input" type="text"/>
+						</div>
+						<div>
+							<label htmlFor="apt_num">Apartment Number</label>
+							<Field name="apt_num" component="input" type="text"/>
+						</div>
 	          <div>
 	  					<label htmlFor="city">City</label>
 		  				<Field name="city" component="input" type="text"/>
@@ -241,6 +249,14 @@ const MasterForm = (props) => {
 	          <div>
 	  					<label htmlFor="alt_street2">Street Address 2</label>
 		  				<Field name="alt_street2" component="input" type="text"/>
+						</div>
+						<div>
+							<label htmlFor="alt_po_box">PO Box</label>
+							<Field name="alt_po_box" component="input" type="text"/>
+						</div>
+						<div>
+							<label htmlFor="alt_apt_num">Apartment Number</label>
+							<Field name="alt_apt_num" component="input" type="text"/>
 						</div>
 	          <div>
 	  					<label htmlFor="alt_city">City</label>
@@ -436,7 +452,7 @@ const MasterForm = (props) => {
 					</div>
           <div>
   					<label htmlFor="org_name">Organization</label>
-	  				<Field name="org_name" component="input" type="text"/>
+	  				<Field name="org_name_" component="input" type="text"/>
 					</div>
           <div>
   					<label htmlFor="pos_name">Position</label>
