@@ -78,6 +78,10 @@ nav a {
     display: inline-block;
 }
 
+.master-form-container ul {
+  list-style-type: none;
+}
+
 .master-form-container input[type="text"],
 .master-form-container input[type="email"],
 .master-form-container select,

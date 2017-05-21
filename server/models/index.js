@@ -23,7 +23,7 @@ if (config.use_env_variable) {
   );
 
   // sync the db TODO: remove this
-  sequelize.sync({ force: true });
+//  sequelize.sync({ force: true });
 }
 
 fs
