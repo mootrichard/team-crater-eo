@@ -10,9 +10,6 @@ module.exports = {
     let formData  = req.body;
     let date = new Date();
 
-    console.log(formData.photo);
-    return;
-
     if (formData === null || formData === undefined || formData === 'undefined') {
       res.status(400).send('bad request');
       return;
