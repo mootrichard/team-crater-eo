@@ -40,7 +40,7 @@ const MasterForm = (props) => {
                             <option value="b">B</option>
                             <option value="c">C</option>
                             <option value="d">D</option>
-                        </Field></h1>
+                            </Field></h1>
 				</div>
 
         <div>

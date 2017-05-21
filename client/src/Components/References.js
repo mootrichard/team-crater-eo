@@ -11,62 +11,64 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
   </div>
 )
 
-const renderRefs = ({ fields, meta: { touched, error } }) => (
-  <ul>
-    {fields.map((reference, index) =>
-      <li key={index}>
-        <h4>Reference #{index + 1}</h4>
-        <button
-          type="button"
-          title="Remove reference"
-          onClick={() => fields.remove(index)}>Remove Reference #{index + 1}</button>
-          <div>
-  					<Field
-  							name={`${reference}.ref_type`}
-  							type="radio"
-  							component={renderField}
-  							label="Personal"
-  							value="personal" />
-  					<Field
-  							name={`${reference}.ref_type`}
-  							type="radio"
-  							component={renderField}
-  							label="Business"
-  							value="business" />
-				</div>
-        <Field
-          name={`${reference}.ref_fname`}
-          type="text"
-          component={renderField}
-          label="First name"/>
-        <Field
-          name={`${reference}.ref_lname`}
-          type="text"
-          component={renderField}
-          label="Last name"/>
-        <Field
-          name={`${reference}.ref_phone`}
-          type="text"
-          component={renderField}
-          label="Phone"/>
-        <Field
-          name={`${reference}.ref_known`}
-          type="text"
-          component={renderField}
-          label="Years known"/>
-        <Field
-          name={`${reference}.ref_notes`}
-          type="text"
-          component={renderField}
-          label="Notes"/>
+const renderRefs = ({ fields, meta: { touched, error } }) => {
+  return (
+    <ul>
+      {fields.map((reference, index) =>
+        <li key={index}>
+          <h4>Reference #{index + 1}</h4>
+          <button
+            type="button"
+            title="Remove reference"
+            onClick={() => fields.remove(index)}>Remove Reference #{index + 1}</button>
+            <div>
+    					<Field
+    							name={`${reference}.ref_type`}
+    							type="radio"
+    							component={renderField}
+    							label="Personal"
+    							value="personal" />
+    					<Field
+    							name={`${reference}.ref_type`}
+    							type="radio"
+    							component={renderField}
+    							label="Business"
+    							value="business" />
+  				</div>
+          <Field
+            name={`${reference}.ref_fname`}
+            type="text"
+            component={renderField}
+            label="First name"/>
+          <Field
+            name={`${reference}.ref_lname`}
+            type="text"
+            component={renderField}
+            label="Last name"/>
+          <Field
+            name={`${reference}.ref_phone`}
+            type="text"
+            component={renderField}
+            label="Phone"/>
+          <Field
+            name={`${reference}.ref_known`}
+            type="text"
+            component={renderField}
+            label="Years known"/>
+          <Field
+            name={`${reference}.ref_notes`}
+            type="text"
+            component={renderField}
+            label="Notes"/>
 
+        </li>
+      )}
+      <li>
+        <button type="button" onClick={() => fields.push({})}>+ Add Reference</button>
+        {touched && error && <span>{error}</span>}
       </li>
-    )}
-    <li>
-      <button type="button" onClick={() => fields.push({})}>+ Add Reference</button>
-      {touched && error && <span>{error}</span>}
-    </li>
-  </ul>
-)
+    </ul>
+  )
+}
 
 export default renderRefs
