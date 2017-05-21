@@ -68,7 +68,7 @@ module.exports = {
           .then(client => {
             let client_id = client.get('id');
 
-            if (formData.alt_fname !== null) {
+            if (formData.alt_fname !== undefined && formData.alt_fname !== null) {
 
               // create Alternate Contact address
               Address.create({
@@ -93,8 +93,7 @@ module.exports = {
                   AddressId: alt_address_id
                 });
 
-                if (formData.school_name !== null) {
-                  console.log('here');
+                if (formData.school_name !== undefined && formData.school_name !== null) {
 
                   // create School address
                   Address.create({
@@ -121,7 +120,7 @@ module.exports = {
                   });
                 }
 
-                if (formData.col_name !== null) {
+                if (formData.col_name !== undefined && formData.col_name !== null) {
 
                   // create College address
                   Address.create({
@@ -147,7 +146,7 @@ module.exports = {
                   });
                 }
 
-                if (formData.voc_cert_name !== null) {
+                if (formData.voc_cert_name !== undefined && formData.voc_cert_name !== null) {
 
                   // create Vocational education details
                   EducationDetail.create({
