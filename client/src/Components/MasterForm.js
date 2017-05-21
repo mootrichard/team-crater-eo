@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, FieldArray, reduxForm } from 'redux-form';
 
 const validate = values => {
   const errors = {}
@@ -12,13 +12,127 @@ const validate = values => {
   return errors
 }
 
-const renderField = ({ input, label, type, meta: { touched, error } }) => (
+const renderErrField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
     <div className="err-output">
       <input {...input} placeholder={label} type={type}/>
       {touched && error && <span>{error}</span>}
     </div>
   </div>
+)
+
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} type={type} placeholder={label}/>
+      {touched && error && <span>{error}</span>}
+    </div>
+  </div>
+)
+
+const renderRefs = ({ fields, meta: { touched, error } }) => (
+  <ul>
+    {fields.map((reference, index) =>
+      <li key={index}>
+        <h4>Reference #{index + 1}</h4>
+        <button
+          type="button"
+          title="Remove reference"
+          onClick={() => fields.remove(index)}>Remove Reference #{index + 1}</button>
+        <Field
+          name={`${reference}.ref_fname`}
+          type="text"
+          component={renderField}
+          label="First name"/>
+        <Field
+          name={`${reference}.ref_lname`}
+          type="text"
+          component={renderField}
+          label="Last name"/>
+        <Field
+          name={`${reference}.ref_phone`}
+          type="text"
+          component={renderField}
+          label="Phone"/>
+        <Field
+          name={`${reference}.ref_known`}
+          type="text"
+          component={renderField}
+          label="Years known"/>
+        <Field
+          name={`${reference}.ref_notes`}
+          type="text"
+          component={renderField}
+          label="Notes"/>
+
+      </li>
+    )}
+    <li>
+      <button type="button" onClick={() => fields.push({})}>Add Reference</button>
+      {touched && error && <span>{error}</span>}
+    </li>
+  </ul>
+)
+
+
+const renderExperience = ({ fields, meta: { touched, error } }) => (
+  <ul>
+    {fields.map((experience, index) =>
+      <li key={index}>
+        <h4>Experience #{index + 1}</h4>
+        <button
+          type="button"
+          title="Remove experience"
+          onClick={() => fields.remove(index)}>Remove Experience #{index + 1}</button>
+        <Field
+          name={`${experience}.org_name`}
+          type="text"
+          component={renderField}
+          label="Organization"/>
+        <Field
+          name={`${experience}.pos_name`}
+          type="text"
+          component={renderField}
+          label="Position"/>
+        <Field
+          name={`${experience}.loc`}
+          type="text"
+          component={renderField}
+          label="Location"/>
+        <Field
+          name={`${experience}.emp_start`}
+          type="date"
+          component={renderField}
+          label="Start date:"/>
+        <Field
+          name={`${experience}.emp_end`}
+          type="date"
+          component={renderField}
+          label="End date:"/>
+        <Field
+          name={`${experience}.work_pay`}
+          type="text"
+          component={renderField}
+          label="How much did you get paid?"/>
+        <Field
+          name={`${experience}.tasks`}
+          type="text"
+          component={renderField}
+          label="Tasks/responsibilities"/>
+        <Field
+          name={`${experience}.reason_left`}
+          type="text"
+          component={renderField}
+          label="Reason for leaving"/>
+
+      </li>
+    )}
+    <li>
+      <button type="button" onClick={() => fields.push({})}>Add Experience</button>
+      {touched && error && <span>{error}</span>}
+    </li>
+  </ul>
 )
 
 const selectState = ( {input}) => (
@@ -152,11 +266,11 @@ const MasterForm = (props) => {
 	        <h2>PERSONAL</h2>
 					<div>
 						<label htmlFor="fname">First name *</label>
-						<Field name="fname" component={renderField} type="text"/>
+						<Field name="fname" component={renderErrField} type="text"/>
 					</div>
 					<div>
   					<label htmlFor="lname">Last name *</label>
-	  				<Field name="lname" component={renderField} type="text"/>
+	  				<Field name="lname" component={renderErrField} type="text"/>
 					</div>
 					<div>
 						<label htmlFor="dob">DOB</label>
@@ -446,71 +560,14 @@ const MasterForm = (props) => {
 
         <div>
 	        <h2>Employment/Volunteer History</h2>
-					<div>
 						<label htmlFor="work_exp">NO WORK/VOLUNTEER EXPERIENCE</label>
-						<Field name="work_exp" id="work_exp" component="input" type="checkbox"/>
-					</div>
-          <div>
-  					<label htmlFor="org_name">Organization</label>
-	  				<Field name="org_name_" component="input" type="text"/>
-					</div>
-          <div>
-  					<label htmlFor="pos_name">Position</label>
-	  				<Field name="pos_name" component="input" type="text"/>
-					</div>
-          <div>
-  					<label htmlFor="loc">Location</label>
-	  				<Field name="loc" component="input" type="text"/>
-					</div>
-					<div>
-						<label htmlFor="emp_start">From:</label>
-						<Field name="emp_start" component="input" type="date"/>
-						<label htmlFor="emp_end">To:&nbsp;</label>
-						<Field name="emp_end" component="input" type="date"/>
-					</div>
-          <div>
-  					<label htmlFor="work_pay">How much you got paid</label>
-	  				<Field name="work_pay" component="input" type="text"/>
-					</div>
-          <div>
-  					<label htmlFor="tasks">Tasks/responsibilities</label>
-	  				<Field name="tasks" component="input" type="text"/>
-					</div>
-          <div>
-  					<label htmlFor="reason_left">Reason for leaving</label>
-	  				<Field name="reason_left" component="input" type="text"/>
-					</div>
-					<button>add more work experience</button>
+            <Field name="work_exp" id="work_exp" component="input" type="checkbox"/>
+            <FieldArray name="experience" component={renderExperience}/>
 				</div>
 
 				<div>
 		      <h2>REFERENCES</h2>
-					<div>
-            <label htmlFor="ref_type">Type of reference&nbsp; </label>
-						<label><Field name="ref_type" id="ref_type" component="input" value="business" type="radio"/> Business</label>
-						<label><Field name="ref_type" id="ref_type" component="input" value="personal" type="radio"/> Personal</label>
-					</div>
-          <div>
-  					<label htmlFor="ref_fname">First name</label>
-	  				<Field name="ref_fname" component="input" type="text"/>
-					</div>
-          <div>
-  					<label htmlFor="ref_lname">Last name</label>
-	  				<Field name="ref_lname" component="input" type="text"/>
-					</div>
-          <div>
-  					<label htmlFor="ref_phone">Phone</label>
-	  				<Field name="ref_phone" component="input" type="text"/>
-					</div>
-          <div>
-  					<label htmlFor="ref_known">Years known</label>
-	  				<Field name="ref_known" component="input" type="text"/>
-					</div>
-          <div>
-  					<label htmlFor="ref_notes">Notes</label>
-	  				<Field name="ref_notes" component="textarea"/>
-					</div>
-					<button>add more references</button>
+          <FieldArray name="reference" component={renderRefs}/>
 				</div>
 
         <div>
