@@ -7,14 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     vocational: { type: DataTypes.BOOLEAN },
     ged: { type: DataTypes.BOOLEAN },
     hs_diploma: { type: DataTypes.BOOLEAN },
-    college_degree: { type: DataTypes.BOOLEAN },
-    certificate: { type: DataTypes.BOOLEAN },
+    certificate: { type: DataTypes.STRING },
     diploma_type: { type: DataTypes.STRING },
     notes: { type: DataTypes.TEXT }
   }, {
     classMethods: {
       associate: (models) => {
-        EducationDetail.hasOne(models.Address);
         EducationDetail.belongsTo(models.Client, {
           onDelete: 'CASCADE'
         });

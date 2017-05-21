@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const AlternateContact = sequelize.define('AlternateContact', {
     first_name: { type: DataTypes.STRING, },
     last_name: { type: DataTypes.STRING, },
-    phone: { type: DataTypes.INTEGER, },
+    phone: { type: DataTypes.STRING, },
     relationship: { type: DataTypes.TEXT }
   }, {
     classMethods: {

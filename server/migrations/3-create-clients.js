@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Client', {
+    return queryInterface.createTable('Clients', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       phone: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       dob: {
         type: Sequelize.DATEONLY
@@ -31,6 +31,12 @@ module.exports = {
       },
       email: {
         type: Sequelize.STRING
+      },
+      odl: {
+        type: Sequelize.STRING
+      },
+      foodhc: {
+        type: Sequelize.BOOLEAN
       },
       registration_date: {
         type: Sequelize.DATEONLY
@@ -59,11 +65,23 @@ module.exports = {
       part_time: {
         type: Sequelize.BOOLEAN
       },
-      daysofweek: {
-        type: Sequelize.STRING
-      },
       hours: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
+      },
+      expectedwage: {
+        type: Sequelize.FLOAT
+      },
+      daysofweek: {
+        type: Sequelize.JSON
+      },
+      willworkdays: {
+        type: Sequelize.BOOLEAN
+      },
+      willworkswing: {
+        type: Sequelize.BOOLEAN
+      },
+      willworknoc: {
+        type: Sequelize.BOOLEAN
       },
       inside: {
         type: Sequelize.BOOLEAN
@@ -74,7 +92,7 @@ module.exports = {
       geo_area: {
         type: Sequelize.STRING
       },
-      work_exp: {
+      no_work_exp: {
         type: Sequelize.BOOLEAN
       },
       benefits_prof: {
@@ -140,7 +158,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         onDelete: 'SET NULL',
         references: {
-          model: 'Address',
+          model: 'Addresses',
           key: 'id'
         },
       },
@@ -148,13 +166,13 @@ module.exports = {
         type: Sequelize.INTEGER,
         onDelete: 'SET NULL',
         references: {
-          model: 'JobDeveloper',
+          model: 'JobDevelopers',
           key: 'id'
         },
       },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Client');
+    return queryInterface.dropTable('Clients');
   }
 };

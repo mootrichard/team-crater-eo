@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('JobDeveloper', {
+    return queryInterface.createTable('AlternateContact', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -14,11 +14,11 @@ module.exports = {
       last_name: {
         type: Sequelize.STRING
       },
-      email: {
+      phone: {
         type: Sequelize.STRING
       },
-      phone: {
-        type: Sequelize.INTEGER
+      relationship: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
@@ -27,10 +27,26 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      addressId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'SET NULL',
+        references: {
+          model: 'Addresses',
+          key: 'id'
+        },
+      },
+      clientId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Clients',
+          key: 'id'
+        }
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('JobDeveloper');
+    return queryInterface.dropTable('AlternateContacts');
   }
 };

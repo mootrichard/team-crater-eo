@@ -1,18 +1,18 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('User', {
+    return queryInterface.createTable('Jobs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      email: {
+      job_title: {
         type: Sequelize.STRING
       },
-      password: {
-        type: Sequelize.STRING
+      job_duties: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
@@ -21,18 +21,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      userTypeId: {
-        type: Sequelize.INTEGER,
-        onDelete: 'SET NULL',
-        references: {
-          model: 'UserType',
-          key: 'id'
-        }
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('User');
+    return queryInterface.dropTable('Jobs');
   }
 };
