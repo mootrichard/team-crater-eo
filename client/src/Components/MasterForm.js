@@ -40,6 +40,20 @@ const renderRefs = ({ fields, meta: { touched, error } }) => (
           type="button"
           title="Remove reference"
           onClick={() => fields.remove(index)}>Remove Reference #{index + 1}</button>
+				<div>
+					<Field
+							name={`${reference}.ref_type`}
+							type="radio"
+							component={renderField}
+							label="Personal"
+							value="personal" />
+					<Field
+							name={`${reference}.ref_type`}
+							type="radio"
+							component={renderField}
+							label="Business"
+							value="business" />
+				</div>
         <Field
           name={`${reference}.ref_fname`}
           type="text"
@@ -560,8 +574,8 @@ const MasterForm = (props) => {
 
         <div>
 	        <h2>Employment/Volunteer History</h2>
-						<label htmlFor="work_exp">NO WORK/VOLUNTEER EXPERIENCE</label>
-            <Field name="work_exp" id="work_exp" component="input" type="checkbox"/>
+						<label htmlFor="no_work_exp">NO WORK/VOLUNTEER EXPERIENCE</label>
+            <Field name="no_work_exp" id="work_exp" component="input" type="checkbox"/>
             <FieldArray name="experience" component={renderExperience}/>
 				</div>
 

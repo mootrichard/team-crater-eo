@@ -125,10 +125,10 @@ module.exports = {
       computer_access: {
         type: Sequelize.BOOLEAN
       },
-      online_app_assistance: {
+      can_complete_online_app: {
         type: Sequelize.BOOLEAN
       },
-      paper_app_assistance: {
+      can_complete_paper_app: {
         type: Sequelize.BOOLEAN
       },
       barriers: {

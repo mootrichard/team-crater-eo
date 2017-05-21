@@ -3,14 +3,12 @@ const Address = require('../models').Address;
 const AlternateContact = require('../models').AlternateContact;
 const EducationDetail = require('../models').EducationDetail;
 const EmploymentDetail = require('../models').EmploymentDetail;
+const Reference = require('../models').Reference;
 
 module.exports = {
   create(req, res) {
     let formData  = req.body;
     let date = new Date();
-
-    console.log(formData);
-    return;
 
     if (formData === null || formData === undefined || formData === 'undefined') {
       res.status(400).send('bad request');
@@ -65,13 +63,30 @@ module.exports = {
             inside: formData.inside,
             outside: formData.outside,
             geo_area: formData.geo_pref,
-            no_work_exp: formData.work_exp
+            no_work_exp: formData.no_work_exp,
+            benefits_prof: formData.consulted,
+            benefits_exp: formData.fin_exp,
+            other_agency: formData.other_agencies,
+            drivers_license: formData.license,
+            car_access: formData.car_access,
+            other_transport: formData.transport_exp,
+            pass_drug_screen: formData.drug_screen,
+            medications: formData.med_use,
+            resume: formData.resume,
+            computer_access: formData.comp_access,
+            can_complete_online_app: formData.online_app,
+            can_complete_paper_app: formData.paper_app,
+            goal: formData.emp_goal,
+            meeting_venue: formData.venue,
+            barriers: formData.barriers,
+            notes: formData.notes,
+
 
           })
           .then(client => {
             let client_id = client.get('id');
 
-            if (formData.alt_fname !== null) {
+            if (formData.alt_fname !== undefined && formData.alt_fname !== null) {
 
               // create Alternate Contact address
               Address.create({
@@ -95,72 +110,114 @@ module.exports = {
                   ClientId: client_id,
                   AddressId: alt_address_id
                 });
+              });
+            }
 
-                if (formData.school_name !== null) {
-                  console.log('here');
+            if (formData.school_name !== undefined && formData.school_name !== null) {
 
-                  // create School address
-                  Address.create({
-                    street_address_one: formData.sch_street1,
-                    street_address_two: formData.sch_street2,
-                    city: formData.sch_city,
-                    state: formData.sch_state,
-                    zip: formData.sch_zip
-                  })
-                  .then( sch_address => {
-                    let sch_address_id = sch_address.get('id');
+              // create School address
+              Address.create({
+                street_address_one: formData.sch_street1,
+                street_address_two: formData.sch_street2,
+                city: formData.sch_city,
+                state: formData.sch_state,
+                zip: formData.sch_zip
+              })
+              .then( sch_address => {
+                let sch_address_id = sch_address.get('id');
 
-                    // create School
-                    EducationDetail.create({
-                      name: formData.school_name,
-                      college: false,
-                      high_school: true,
-                      vocational: false,
-                      ged: formData.ged,
-                      hs_diploma: formData.diploma,
-                      AddressId: sch_address_id,
-                      ClientId: client_id
-                    });
-                  });
+                // create School
+                EducationDetail.create({
+                  name: formData.school_name,
+                  college: false,
+                  high_school: true,
+                  vocational: false,
+                  ged: formData.ged,
+                  hs_diploma: formData.diploma,
+                  AddressId: sch_address_id,
+                  ClientId: client_id
+                });
+              });
+            }
+
+            if (formData.col_name !== undefined && formData.col_name !== null) {
+
+              // create College address
+              Address.create({
+                street_address_one: formData.col_street1,
+                street_address_two: formData.col_street2,
+                city: formData.col_city,
+                state: formData.col_state,
+                zip: formData.col_zip
+              })
+              .then( col_address => {
+                let col_address_id = col_address.get('id');
+
+                // create College
+                EducationDetail.create({
+                  name: formData.col_name,
+                  college: true,
+                  high_school: false,
+                  vocational: false,
+                  certificate: formData.cert_name,
+                  AddressId: col_address_id,
+                  ClientId: client_id
+                });
+              });
+            }
+
+            if (formData.voc_cert_name !== undefined && formData.voc_cert_name !== null) {
+
+              // create Vocational education details
+              EducationDetail.create({
+                college: false,
+                high_school: false,
+                vocational: true,
+                certificate: formData.voc_cert_name,
+                ClientId: client_id
+              });
+            }
+
+            if (!formData.no_work_exp && formData.experience !== undefined && formData.experience !== null) {
+
+              // create Work Experience(s)
+              formData.experience.forEach(function(exp) {
+                EmploymentDetail.create({
+                  organization: exp.org_name,
+                  job_title: exp.pos_name,
+                  location: exp.loc,
+                  job_duties: exp.tasks,
+                  pay: exp.work_pay,
+                  leaving_reason: exp.reason_left,
+                  start: exp.emp_start,
+                  end: exp.emp_end,
+                  ClientId: client_id
+                });
+              });
+            }
+
+            if (formData.reference !== undefined && formData.reference !== null) {
+
+              // create Reference(s)
+              formData.reference.forEach(function(ref) {
+                if (ref.ref_type === 'business') {
+                  is_biz = true;
+                  is_personal = false;
                 }
-
-                if (formData.col_name !== null) {
-
-                  // create College address
-                  Address.create({
-                    street_address_one: formData.col_street1,
-                    street_address_two: formData.col_street2,
-                    city: formData.col_city,
-                    state: formData.col_state,
-                    zip: formData.col_zip
-                  })
-                  .then( col_address => {
-                    let col_address_id = col_address.get('id');
-
-                    // create College
-                    EducationDetail.create({
-                      name: formData.col_name,
-                      college: true,
-                      high_school: false,
-                      vocational: false,
-                      certificate: formData.cert_name,
-                      AddressId: col_address_id,
-                      ClientId: client_id
-                    });
-                  });
+                else {
+                  is_biz = false;
+                  is_personal = true;
                 }
-
-                if (formData.voc_cert_name !== null) {
-
-                  // create Vocational education details
-                  EducationDetail.create({
-                    college: false,
-                    high_school: false,
-                    vocational: true,
-                    certificate: formData.voc_cert_name,
-                    ClientId: client_id
-                  });
-                }
+                Reference.create({
+                  first_name: ref.ref_fname,
+                  last_name: ref.ref_lname,
+                  phone: ref.ref_phone,
+                  years_known: ref.ref_known,
+                  notes: ref.ref_notes,
+                  business: is_biz,
+                  personal: is_personal,
+                  ClientId: client_id
+                });
               });
             }
 
