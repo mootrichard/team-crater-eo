@@ -1,11 +1,9 @@
 const router = require('express').Router();
-const jobDevelopersController = require('../controllers').jobDevelopers;
-const clientsController = require('../controllers').clients;
-const jobs = require('./jobs');
-const users = require('./users');
-const userTypes = require('./userTypes');
-const jobDevelopers = require('./jobDevelopers');
-const clients = require('./clients');
+const jobs = require('./routes/jobs');
+const users = require('./routes/users');
+const userTypes = require('./routes/userTypes');
+const jobDevelopers = require('./routes/jobDevelopers');
+const clients = require('./routes/clients');
 
 router.get('/', (req, res) => res.status(200).send({
   message: 'Welcome to the Employment Options API!',

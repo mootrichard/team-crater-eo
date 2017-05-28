@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const jobsController = require('../controllers').jobs;
+const jobsController = require('../../controllers/index').jobs;
 
 // Jobs
 router.post('/', jobsController.create);
