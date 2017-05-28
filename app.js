@@ -10,6 +10,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var masterform = require('./routes/masterform');
+const routes = require('./server/routes/index');
 
 var app = express();
 
@@ -32,7 +33,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Require our routes into the application.
-require('./server/routes')(app);
+app.use('/api', routes);
 
 app.use('/users', users);
 app.use('/login', login);

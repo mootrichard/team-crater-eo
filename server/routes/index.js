@@ -1,30 +1,29 @@
-const jobsController = require('../controllers').jobs;
-const usersController = require('../controllers').users;
-const userTypesController = require('../controllers').userTypes;
+const router = require('express').Router();
 const jobDevelopersController = require('../controllers').jobDevelopers;
 const clientsController = require('../controllers').clients;
+const jobs = require('./jobs');
+const users = require('./users');
+const userTypes = require('./userTypes');
+const jobDevelopers = require('./jobDevelopers');
+const clients = require('./clients');
 
-module.exports = (app) => {
-  app.get('/api', (req, res) => res.status(200).send({
-    message: 'Welcome to the Employment Options API!',
-  }));
+router.get('/', (req, res) => res.status(200).send({
+  message: 'Welcome to the Employment Options API!',
+}));
 
-  // Jobs
-  app.post('/api/jobs', jobsController.create);
-  app.get('/api/jobs/:jobId', jobsController.getOne);
-  app.get('/api/jobs', jobsController.getAll);
+// Jobs
+router.use('/jobs', jobs);
 
-  // Users
-  app.post('/api/users', usersController.create);
+// Users
+router.use('/users', users);
 
-  // User Types
-  app.post('/api/userTypes', userTypesController.create);
+// User Types
+router.use('/user-types', userTypes);
 
-  // Job Developers
-  app.post('/api/jobDevelopers', jobDevelopersController.create);
-  app.get('/api/jobDevelopers/:jobDeveloperId', jobDevelopersController.getOne);
-  app.get('/api/jobDevelopers', jobDevelopersController.getAll);
+// Job Developers
+router.use('/job-developers', jobDevelopers);
 
-  // Clients
-  app.post('/api/clients', clientsController.create);
-};
+// Clients
+router.use('/clients', clients);
+
+module.exports = router;
