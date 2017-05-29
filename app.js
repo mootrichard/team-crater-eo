@@ -4,9 +4,10 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
 const session = require('express-session');
 const passport = require('passport');
-const passportConfig = require('./server/config/passport')(passport);
+require('./server/config/passport')(passport);
 
 const index = require('./routes/index');
 const users = require('./routes/users');
@@ -35,11 +36,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Require our router into the application.
-app.use('/api', routes);
+// Login
+app.post('/login', passport.authenticate('local-login'), (req, res, next)=>{
+  const token = jwt.sign({
+    username: req.user.username
+  }, 'allYOURbaseAREbelongTOus', {
+      algorithm: 'HS256',
+      expiresIn: '1 d'
+  });
+  console.log(token);
+  res.json({
+      success: true,
+      message: 'access granted',
+      token: token
+  });
+});
 
+// Require our router into the application.
+app.use('/api', passport.authenticate('jwt', {session: false}) ,routes);
 app.use('/users', users);
-app.use('/login', login);
 app.use('/masterform', masterform);
 app.use('/', index);
 
