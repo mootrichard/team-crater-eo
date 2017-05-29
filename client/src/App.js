@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import MasterForm from './Components/MasterForm.js'
+import MasterForm from './Components/MasterForm.js';
+import ClientData from './Components/ClientData.js';
 import {
   BrowserRouter as Router,
   Route,
@@ -28,6 +29,7 @@ class App extends Component {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/login">Login</Link></li>
                     <li><Link to="/masterform">Master Form</Link></li>
+                    <li><Link to="/clients">Clients</Link></li>
                   </ul>
                 </div>
               </div>
@@ -37,6 +39,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route path="/login" component={LoginForm} />
               <Route path="/masterform" component={MasterForm} />
+              <Route path="/clients" component={ClientData} />
             </div>
           </div>
         </Router>

@@ -27,4 +27,6 @@ module.exports = (app) => {
 
   // Clients
   app.post('/api/clients', clientsController.create);
+  app.get('/api/clients/', clientsController.getAll);
+  app.get('/api/clients/:id', clientsController.getOne);
 };

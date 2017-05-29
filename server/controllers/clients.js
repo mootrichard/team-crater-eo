@@ -228,6 +228,27 @@ module.exports = {
           .catch(error => res.status(400).send(error));
 
     });
+  },
+
+  getAll(req, res) {
+    return Client
+        .all()
+        .then(clients => res.status(200).send(clients))
+        .catch(error => res.status(400).send(error));
+  },
+
+  getOne(req, res) {
+    return Client
+        .findByPrimary(req.params.id)
+        .then(client => {
+          if (!client) {
+            return res.status(404).send({
+              message: 'Client Not Found'
+            });
+          }
+          return res.status(200).send(client);
+        })
+        .catch(error => res.status(400).send(error));
   }
 };
 
