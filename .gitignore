@@ -40,3 +40,4 @@ npm-debug.log
 # Environment
 .env
 server/config/config.json
+server/config/superuser.js

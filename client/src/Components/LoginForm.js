@@ -13,7 +13,10 @@ const LoginForm  = (props) => {
 			body: JSON.stringify(formData)
 		})
 		.then(res=> res.json())
-		.then(login => alert(JSON.stringify(login, null, 2)));
+		.then((login) => {
+			alert(JSON.stringify(login, null, 2))
+			localStorage.setItem("token", login.token);
+		});
 	};
 	return(
 			<form className="form-horizontal" onSubmit={handleSubmit(authenticate)} >
