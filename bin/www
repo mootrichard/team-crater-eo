@@ -25,6 +25,8 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
+//sequelize.sync({ force: true }); <-- Use the force option if you want to update the tables
+// based on the migration files, WHICH WILL WIPE ALL DATA!!!
 models.sequelize.sync().then(()=>{
   server.listen(port);
   server.on('error', onError);
