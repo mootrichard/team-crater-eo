@@ -14,6 +14,7 @@ const index = require('./routes/index');
 const users = require('./routes/users');
 const login = require('./routes/login');
 const masterform = require('./routes/masterform');
+const clients = require('./routes/clients');
 const routes = require('./server/router/index');
 
 const app = express();
@@ -30,7 +31,7 @@ app.use(session({
   saveUninitialized: false
 }));
 app.use(passport.initialize());
-app.use(passport.session())
+app.use(passport.session());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -57,7 +58,8 @@ app.post('/login', passport.authenticate('local-login'), (req, res, next)=>{
 });
 
 // Require our router into the application.
-app.use('/api', passport.authenticate('jwt', {session: false}) ,routes);
+//app.use('/api', passport.authenticate('jwt', {session: false}) ,routes);
+app.use('/api', routes);
 app.use('/users', users);
 app.use('/masterform', masterform);
 app.use('/clients', clients);

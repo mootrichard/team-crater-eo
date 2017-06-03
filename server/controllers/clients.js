@@ -32,6 +32,7 @@ module.exports = {
     })
     .then( address => {
       let address_id = address.get('id');
+      let keySkilsJSON = JSON.stringify(formData.key_skills);
 
       return Client
           // create client
@@ -83,8 +84,7 @@ module.exports = {
             meeting_venue: formData.venue,
             barriers: formData.barriers,
             notes: formData.notes,
-            profile: formData.profess_profile,
-            key_skills: formData.key_skills,
+            key_skills: keySkilsJSON
 
           })
           .then(client => {
@@ -186,11 +186,12 @@ module.exports = {
 
               // create Work Experience(s)
               formData.experience.forEach(function(exp) {
+                let tasksJSON = JSON.stringify(exp.tasks);
                 EmploymentDetail.create({
                   organization: exp.org_name,
                   job_title: exp.pos_name,
                   location: exp.loc,
-                  job_duties: exp.tasks,
+                  job_duties: tasksJSON,
                   pay: exp.work_pay,
                   leaving_reason: exp.reason_left,
                   start: exp.emp_start,
