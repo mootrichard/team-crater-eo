@@ -34,13 +34,13 @@ const MasterForm = (props) => {
 		<form onSubmit={ handleSubmit(postForm) }>
 			<div className="master-form-container">
 				<div className="master-form-header">
-					<h1>Master Application <Field name="letter" component="select">
-														<option value="none"></option>
+					<h1>Master Application</h1> <Field name="letter" component="select">
+														<option></option>
                             <option value="a">A</option>
                             <option value="b">B</option>
                             <option value="c">C</option>
                             <option value="d">D</option>
-                            </Field></h1>
+                            </Field>
 				</div>
 
         <div>

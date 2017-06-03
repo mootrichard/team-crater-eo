@@ -79,10 +79,12 @@ module.exports = {
             can_complete_online_app: formData.online_app,
             can_complete_paper_app: formData.paper_app,
             goal: formData.emp_goal,
+            profile: formData.profess_profile,
             meeting_venue: formData.venue,
             barriers: formData.barriers,
             notes: formData.notes,
-
+            profile: formData.profess_profile,
+            key_skills: formData.key_skills,
 
           })
           .then(client => {
@@ -254,6 +256,7 @@ module.exports = {
 
 
 function getDaysOfWeekJSON(data) {
+  console.log("in daysofweek");
   let days_of_week = {};
   days_of_week.days = [];
 

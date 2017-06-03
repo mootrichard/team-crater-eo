@@ -1,5 +1,37 @@
 import React from 'react';
-import { Field } from 'redux-form';
+import { Field, FieldArray } from 'redux-form';
+
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} type={type} placeholder={label}/>
+      {touched && error && <span>{error}</span>}
+    </div>
+  </div>
+)
+
+const renderSkills = ({ fields, meta: { touched, error } }) => {
+  return (
+    <ul>
+      {fields.map((keySkill, index) =>
+        <li key={index}>
+          <button
+            type="button"
+            title="Remove skill"
+            onClick={() => fields.remove(index)}>Remove Skill</button>
+          <Field
+            name={keySkill}
+            type="text"
+            component={renderField}/>
+        </li>
+      )}
+      <li>
+        <button type="button" onClick={() => fields.push({})}>+ Add Skill</button>
+      </li>
+    </ul>
+  )
+}
 
 const ResumeInfo = () => {
   return (
@@ -10,7 +42,7 @@ const ResumeInfo = () => {
       </div>
       <div>
         <label htmlFor="key_skills">Key Skills</label>
-        <Field name="key_skills" component="input" type="text"/>
+        <FieldArray name="key_skills" component={renderSkills}/>
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field } from 'redux-form';
+import { Field, FieldArray } from 'redux-form';
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div>
@@ -10,6 +10,28 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
     </div>
   </div>
 )
+
+const renderTask = ({ fields, meta: { touched, error } }) => {
+  return (
+    <ul>
+      {fields.map((task, index) =>
+        <li key={index}>
+          <button
+            type="button"
+            title="Remove skill"
+            onClick={() => fields.remove(index)}>Remove Task</button>
+          <Field
+            name={task}
+            type="text"
+            component={renderField}/>
+        </li>
+      )}
+      <li>
+        <button type="button" onClick={() => fields.push({})}>+ Add Task</button>
+      </li>
+    </ul>
+  )
+}
 
 const renderExperience = ({ fields, meta: { touched, error } }) => {
   return (
@@ -51,11 +73,11 @@ const renderExperience = ({ fields, meta: { touched, error } }) => {
             type="text"
             component={renderField}
             label="How much did you get paid?"/>
-          <Field
+          <label>Tasks/responsibilities</label>
+          <FieldArray
             name={`${experience}.tasks`}
-            type="text"
-            component={renderField}
-            label="Tasks/responsibilities"/>
+            component={renderTask}
+            placeholder="Task/responsibility"/>
           <Field
             name={`${experience}.reason_left`}
             type="text"
