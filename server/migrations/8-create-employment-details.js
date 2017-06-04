@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       job_duties: {
-        type: Sequelize.TEXT
+        type: Sequelize.JSON
       },
       pay: {
         type: Sequelize.STRING

@@ -46,7 +46,9 @@ module.exports = (sequelize, DataTypes) => {
     goal: { type: DataTypes.TEXT },
     meeting_venue: { type: DataTypes.TEXT },
     notes: { type: DataTypes.TEXT },
-    photo: { type: DataTypes.BLOB }
+    photo: { type: DataTypes.BLOB },
+    profile: { type: DataTypes.TEXT },
+    key_skills: { type: DataTypes.JSON}
   }, {
     classMethods: {
       associate: (models) => {
