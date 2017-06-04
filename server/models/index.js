@@ -21,9 +21,6 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(
     config.database, config.username, config.password, config
   );
-
-  // sync the db TODO: remove this
-  //sequelize.sync({ force: true });
 }
 
 fs
