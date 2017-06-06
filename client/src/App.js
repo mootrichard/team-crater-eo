@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import MasterForm from './Components/MasterForm.js';
 import ClientData from './Components/ClientData.js';
+import LoginForm from './Components/LoginForm';
 import {
   BrowserRouter as Router,
   Route,
   Link} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-import LoginForm from './Components/LoginForm';
 
 const Home = () => (
   <div className="container">
