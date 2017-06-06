@@ -42,7 +42,10 @@ a.link-fix {
   }
 }
 
-label {}
+label {
+  font-family: $bodyCopy;
+  font-size: 18px;
+}
 
 input[type="text"], input[type="email"], input[type="password"],input[type="tel"], input[type="number"], textarea, select {
   @include browser-appearance(none);

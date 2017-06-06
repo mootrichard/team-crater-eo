@@ -38,6 +38,10 @@ a.link-fix {
     color: white;
     background-color: black; }
 
+label {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 18px; }
+
 input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="number"], textarea, select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -56,5 +60,18 @@ input[type="text"], input[type="email"], input[type="password"], input[type="tel
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex; }
+
+.login-form {
+  width: 400px;
+  margin: 100px auto 0;
+  border: 2px solid black;
+  padding: 40px;
+  border-radius: 10px; }
+  .login-form .logo-wrapper {
+    text-align: center; }
+  .login-form .button-wrapper {
+    text-align: center; }
+    .login-form .button-wrapper button {
+      margin-top: 15px; }
 
 /*# sourceMappingURL=main.css.map */

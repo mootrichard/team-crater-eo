@@ -1,0 +1,19 @@
+.login-form{
+  width: 400px;
+  margin: 100px auto 0;
+  border: 2px solid black;
+  padding: 40px;
+  border-radius: 10px;
+
+  .logo-wrapper {
+    text-align: center;
+  }
+
+  .button-wrapper {
+    text-align: center;
+
+    button {
+      margin-top: 15px;
+    }
+  }
+}
