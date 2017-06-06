@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 const LoginForm  = (props) => {
-	const { handleSubmit, pristine, submitting } = props;
+	const { handleSubmit, pristine, submitting, logIn } = props;
 	const authenticate = (formData) => {
 		fetch("/login", {
 			headers: {
@@ -14,8 +14,9 @@ const LoginForm  = (props) => {
 		})
 		.then(res=> res.json())
 		.then((login) => {
-			alert(JSON.stringify(login, null, 2))
+			alert(JSON.stringify(login, null, 2));
 			localStorage.setItem("token", login.token);
+			logIn(login.token);
 		});
 	};
 	return(

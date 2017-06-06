@@ -5,7 +5,8 @@ import ClientData from './Components/ClientData.js';
 import {
   BrowserRouter as Router,
   Route,
-  Link} from 'react-router-dom';
+  Link,
+  NavLink} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import LoginForm from './Components/LoginForm';
@@ -17,6 +18,28 @@ const Home = () => (
 )
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      loggedIn: false
+    };
+
+    this.logIn = this.logIn.bind(this);
+  }
+
+  logIn = (token)=>{
+    if(token){
+        this.setState({
+            loggedIn: true
+        })
+    }
+  };
+
+  componentWillMount = ()=>{
+    this.logIn(localStorage.getItem('token'))
+  };
+
+
   render() {
     return (
       <Provider store={store}>
@@ -26,10 +49,10 @@ class App extends Component {
               <div className="container">
                 <div id="navbar" className="collapse navbar-collapse">
                   <ul className="nav navbar-nav">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/masterform">Master Form</Link></li>
-                    <li><Link to="/clients">Clients</Link></li>
+                    <li><NavLink to="/">Home</NavLink></li>
+                    <li><NavLink to="/login">Login</NavLink></li>
+                      {this.state.loggedIn && <li><Link to="/masterform">Master Form</Link></li>}
+                      {this.state.loggedIn && <li><Link to="/clients">Clients</Link></li> }
                   </ul>
                 </div>
               </div>
@@ -37,7 +60,7 @@ class App extends Component {
 
             <div className="container text-center">
               <Route exact path="/" component={Home} />
-              <Route path="/login" component={LoginForm} />
+              <Route path="/login" render={(props)=>{return (<LoginForm logIn={this.logIn} />)}} />
               <Route path="/masterform" component={MasterForm} />
               <Route path="/clients" component={ClientData} />
             </div>
