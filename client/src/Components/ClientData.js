@@ -12,7 +12,8 @@ let ClientData = (props) => {
     fetch(`/api/clients/${id}`, {
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': 'JWT '+localStorage.getItem("token")
       },
       method: 'GET'
     })

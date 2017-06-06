@@ -16,7 +16,8 @@ let ClientData = () => {
     fetch("/api/clients", {
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': 'JWT '+localStorage.getItem("token")
       },
       method: 'GET'
     })
