@@ -213,7 +213,7 @@ const MasterForm = (props) => {
 	const { handleSubmit, pristine, submitting } = props;
 	const createResume = (data) => {
 		var win = window.open("", "Title", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=780, height=700, top="+(screen.height-400)+", left="+(screen.width-840));
-		win.document.body.innerHTML = '<link type="text/css" rel="stylesheet" href="../styles/App.css"/>' +
+		win.document.body.innerHTML = '<link type="text/css" rel="stylesheet" href="../App.css"/>' +
 																	'<div id="name"></div>' +
 																	'<div id="address"><div id="street"></div><div id="location"></div></div>' +
 																	'<div id="separator"></div>' +

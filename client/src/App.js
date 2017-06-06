@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles/App.css';
+import './App.css';
 import MasterForm from './Components/MasterForm.js'
 import {
   BrowserRouter as Router,
@@ -21,18 +21,6 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div>
-            <nav className="navbar navbar-inverse navbar-fixed-top">
-              <div className="container">
-                <div id="navbar" className="collapse navbar-collapse">
-                  <ul className="nav navbar-nav">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/masterform">Master Form</Link></li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
-
             <div className="container text-center">
               <Route exact path="/" component={Home} />
               <Route path="/login" component={LoginForm} />
