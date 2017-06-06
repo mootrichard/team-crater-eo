@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     organization: { type: DataTypes.STRING },
     job_title: { type: DataTypes.STRING },
     location: { type: DataTypes.STRING },
-    job_duties: { type: DataTypes.TEXT },
+    job_duties: { type: DataTypes.JSON },
     pay: { type: DataTypes.STRING },
     leaving_reason: { type: DataTypes.TEXT },
     start: { type: DataTypes.DATEONLY },

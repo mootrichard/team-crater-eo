@@ -10,6 +10,8 @@ module.exports = {
     let formData  = req.body;
     let date = new Date();
 
+    console.log(formData);
+
     if (formData === null || formData === undefined || formData === 'undefined') {
       res.status(400).send('bad request');
       return;
@@ -30,6 +32,7 @@ module.exports = {
     })
     .then( address => {
       let address_id = address.get('id');
+      let keySkilsJSON = JSON.stringify(formData.key_skills);
 
       return Client
           // create client
@@ -77,10 +80,11 @@ module.exports = {
             can_complete_online_app: formData.online_app,
             can_complete_paper_app: formData.paper_app,
             goal: formData.emp_goal,
+            profile: formData.profess_profile,
             meeting_venue: formData.venue,
             barriers: formData.barriers,
             notes: formData.notes,
-
+            key_skills: keySkilsJSON
 
           })
           .then(client => {
@@ -182,11 +186,12 @@ module.exports = {
 
               // create Work Experience(s)
               formData.experience.forEach(function(exp) {
+                let tasksJSON = JSON.stringify(exp.tasks);
                 EmploymentDetail.create({
                   organization: exp.org_name,
                   job_title: exp.pos_name,
                   location: exp.loc,
-                  job_duties: exp.tasks,
+                  job_duties: tasksJSON,
                   pay: exp.work_pay,
                   leaving_reason: exp.reason_left,
                   start: exp.emp_start,
@@ -226,11 +231,33 @@ module.exports = {
           .catch(error => res.status(400).send(error));
 
     });
+  },
+
+  getAll(req, res) {
+    return Client
+        .all()
+        .then(clients => res.status(200).send(clients))
+        .catch(error => res.status(400).send(error));
+  },
+
+  getOne(req, res) {
+    return Client
+        .findByPrimary(req.params.id)
+        .then(client => {
+          if (!client) {
+            return res.status(404).send({
+              message: 'Client Not Found'
+            });
+          }
+          return res.status(200).send(client);
+        })
+        .catch(error => res.status(400).send(error));
   }
 };
 
 
 function getDaysOfWeekJSON(data) {
+  console.log("in daysofweek");
   let days_of_week = {};
   days_of_week.days = [];
 

@@ -146,6 +146,12 @@ module.exports = {
       photo: {
         type: Sequelize.BLOB
       },
+      profile: {
+        type: Sequelize.TEXT
+      },
+      key_skills: {
+        type: Sequelize.JSON
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

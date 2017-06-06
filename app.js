@@ -9,10 +9,12 @@ const session = require('express-session');
 const passport = require('passport');
 require('./server/config/passport')(passport);
 
+
 const index = require('./routes/index');
 const users = require('./routes/users');
 const login = require('./routes/login');
 const masterform = require('./routes/masterform');
+const clients = require('./routes/clients');
 const routes = require('./server/router/index');
 
 const app = express();
@@ -56,9 +58,11 @@ app.post('/login', passport.authenticate('local-login'), (req, res, next)=>{
 });
 
 // Require our router into the application.
-app.use('/api', passport.authenticate('jwt', {session: false}) ,routes);
+//app.use('/api', passport.authenticate('jwt', {session: false}) ,routes);
+app.use('/api', routes);
 app.use('/users', users);
 app.use('/masterform', masterform);
+app.use('/clients', clients);
 app.use('/', index);
 
 // catch 404 and forward to error handler
