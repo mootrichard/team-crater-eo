@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import MasterForm from './Components/MasterForm.js';
 import ClientData from './Components/ClientData.js';
+import LoginForm from './Components/LoginForm';
 import {
   BrowserRouter as Router,
   Route,
@@ -9,7 +10,6 @@ import {
   NavLink} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-import LoginForm from './Components/LoginForm';
 
 const Home = () => (
   <div className="container">
@@ -45,19 +45,6 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div>
-            <nav className="navbar navbar-inverse navbar-fixed-top">
-              <div className="container">
-                <div id="navbar" className="collapse navbar-collapse">
-                  <ul className="nav navbar-nav">
-                    <li><NavLink to="/">Home</NavLink></li>
-                    <li><NavLink to="/login">Login</NavLink></li>
-                      {this.state.loggedIn && <li><Link to="/masterform">Master Form</Link></li>}
-                      {this.state.loggedIn && <li><Link to="/clients">Clients</Link></li> }
-                  </ul>
-                </div>
-              </div>
-            </nav>
-
             <div className="container text-center">
               <Route exact path="/" component={Home} />
               <Route path="/login" render={(props)=>{return (<LoginForm logIn={this.logIn} />)}} />
