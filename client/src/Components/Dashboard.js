@@ -1,32 +1,22 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import MasterForm from './MasterForm';
 import ClientData from './ClientData';
+import Logout from './Logout';
 
 class Dashboard extends Component {
+    componentWillMount(){
+        this.props.displayNav();
+    }
 
     render(){
-    return (
-        <Router>
-            <div>
-                <nav className="navbar navbar-inverse navbar-fixed-top">
-                    <div className="container">
-                        <div id="navbar" className="collapse navbar-collapse">
-                            <ul className="nav navbar-nav">
-                                <li><NavLink to="/masterform">Master Form</NavLink></li>
-                                <li><NavLink to="/clients">Clients</NavLink></li>
-                            </ul>
-                        </div>
+        return (
+                    <div className="container text-center">
+                        <Route path="/masterform" component={MasterForm} />
+                        <Route path="/clients" component={ClientData} />
+                        <Route path="/logout" component={Logout} />
                     </div>
-                </nav>
-
-                <div className="container text-center">
-                    <Route path="/masterform" component={MasterForm} />
-                    <Route path="/clients" component={ClientData} />
-                </div>
-            </div>
-        </Router>
-    )
+        )
     }
 }
 

@@ -34,7 +34,7 @@ class LoginForm  extends Component {
 					loginFailure: true
 				})
 			}
-			res.json();
+			return res.json();
 		})
 		.then((login) => {
 			localStorage.setItem("token", login.token);
