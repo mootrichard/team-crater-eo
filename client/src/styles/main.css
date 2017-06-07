@@ -63,26 +63,49 @@ input[type="text"], input[type="email"], input[type="password"], input[type="tel
   display: -webkit-flex;
   display: flex; }
 
+* {
+  margin: 0;
+  padding: 0; }
+
 html {
   height: 100%; }
 
 body {
   margin: 0;
-  padding-top: 65px;
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0;
+  padding: 0;
   font-family: sans-serif; }
+
+img {
+  max-width: 100%; }
+
+p, li {
+  font-family: "Open Sans Condensed", sans-serif; }
+
+h1 {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 40px; }
+
+h2 {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 30px; }
+
+h3 {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 24px; }
+
+h4 {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 22px; }
 
 .login-form {
   width: 400px;
-  margin: 100px auto 0;
+  margin: 40px auto 0;
   padding: 40px;
   border-radius: 10px;
   -webkit-box-shadow: 0 0 17px 2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0 0 17px 2px rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 17px 2px rgba(0, 0, 0, 0.75);
-  background-color: #ffffff; }
+  background-color: white; }
   .login-form .form-group:first-of-type {
     margin-bottom: 15px; }
   .login-form input[type="text"], .login-form input[type="password"] {
@@ -101,9 +124,44 @@ body {
     .login-form .button-wrapper button {
       margin-top: 15px; }
 
+.user-header {
+  background: -moz-linear-gradient(top, #7c4399 0%, #BAC4D6 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #7c4399), color-stop(100%, #BAC4D6));
+  background: -webkit-linear-gradient(top, #7c4399 0%, #BAC4D6 100%);
+  background: -o-linear-gradient(top, #7c4399 0%, #BAC4D6 100%);
+  background: -ms-linear-gradient(top, #7c4399 0%, #BAC4D6 100%);
+  background: linear-gradient(to bottom, #7c4399 0%, #BAC4D6 100%);
+  -webkit-align-items: center;
+  align-items: center; }
+  .user-header .logo-wrapper {
+    width: 100px;
+    margin-right: 40px; }
+    .user-header .logo-wrapper img {
+      display: block; }
+  .user-header h1 {
+    color: white; }
+
+.user-navbar {
+  width: 200px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #BAC4D6;
+  margin-top: 10px; }
+  .user-navbar nav {
+    padding: 30px 0 30px 30px; }
+  .user-navbar ul {
+    list-style: none; }
+    .user-navbar ul li {
+      list-style: none;
+      display: block; }
+      .user-navbar ul li + li {
+        margin-top: 10px; }
+      .user-navbar ul li:hover {
+        text-decoration: underline; }
+
 body.login-page {
   background: -moz-linear-gradient(top, #7c4399 0%, #BAC4D6 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, #2431C7), color-stop(100%, #BAC4D6));
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #7c4399), color-stop(100%, #BAC4D6));
   background: -webkit-linear-gradient(top, #7c4399 0%, #BAC4D6 100%);
   background: -o-linear-gradient(top, #7c4399 0%, #BAC4D6 100%);
   background: -ms-linear-gradient(top, #7c4399 0%, #BAC4D6 100%);

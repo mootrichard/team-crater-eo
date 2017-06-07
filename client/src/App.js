@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
 import MasterForm from './Components/MasterForm.js';
 import ClientData from './Components/ClientData.js';
 import LoginForm from './Components/LoginForm';
