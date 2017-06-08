@@ -80,10 +80,11 @@ module.exports = {
             can_complete_online_app: formData.online_app,
             can_complete_paper_app: formData.paper_app,
             goal: formData.emp_goal,
-            profile: formData.profess_profile,
             meeting_venue: formData.venue,
             barriers: formData.barriers,
             notes: formData.notes,
+            profile: formData.profess_profile,
+            interests: formData.interests,
             key_skills: keySkilsJSON
 
           })
@@ -189,6 +190,7 @@ module.exports = {
                 let tasksJSON = JSON.stringify(exp.tasks);
                 EmploymentDetail.create({
                   organization: exp.org_name,
+                  description: exp.description,
                   job_title: exp.pos_name,
                   location: exp.loc,
                   job_duties: tasksJSON,

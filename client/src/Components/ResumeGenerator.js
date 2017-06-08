@@ -1,4 +1,7 @@
 export default function createResume (data) {
+  console.log("in create res");
+  //let arr = JSON.parse(data);
+  console.log(JSON.parse(data));
   var win = window.open("", "Title", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=780, height=700, top="+(screen.height-400)+", left="+(screen.width-840));
   win.document.body.innerHTML = '<link type="text/css" rel="stylesheet" href="../App.css"/>' +
                                 '<div id="name"></div>' +
@@ -8,7 +11,7 @@ export default function createResume (data) {
                                 '<div id="skills"></div>' +
                                 '<div id="prof_exp"><div id="emp_date"></div><div id="job_title"></div><div id="responsibilities"></div></div>' +
                                 '<div id="education"></div>';
-  win.document.getElementById('name').innerHTML = '<h1>' + data.fname + ' ' + data.lname + '</h1>';
+  win.document.getElementById('name').innerHTML = '<h1>' + data.Object.fname + ' ' + data.Object.lname + '</h1>';
   if (data.street1 && data.street2){
     win.document.getElementById('street').innerHTML = data.street1 + '<br>' + data.street2;
   } else if (data.street1) {

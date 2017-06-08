@@ -39,6 +39,11 @@ const renderExperience = ({ fields, meta: { touched, error } }) => {
             component={renderField}
             label="Location"/>
           <Field
+            name={`${experience}.description`}
+            type="text"
+            component={renderField}
+            label="Brief description"/>
+          <Field
             name={`${experience}.emp_start`}
             type="date"
             component={renderField}
