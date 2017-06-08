@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import BodyClassName from 'react-body-classname';
+import { Redirect } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 
 import logo from '../images/eo-logo.png';
 
-const LoginForm  = (props) => {
-	const { handleSubmit, pristine, submitting, logIn } = props;
-	const authenticate = (formData) => {
+class LoginForm  extends Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			loginSuccess: false,
+			loginFailure: false
+		};
+		this.authenticate = this.authenticate.bind(this);
+	}
+
+	authenticate(formData) {
 		fetch("/login", {
 			headers: {
 				'Accept': 'application/json',
@@ -15,28 +24,40 @@ const LoginForm  = (props) => {
 			method: 'POST',
 			body: JSON.stringify(formData)
 		})
-		.then(res=> res.json())
+		.then((res)=> {
+			return res.json();
+		})
 		.then((login) => {
-			alert(JSON.stringify(login, null, 2));
-			localStorage.setItem("token", login.token);
-			logIn(login.token);
-		});
+			if(login.success){
+				localStorage.setItem("token", login.token);
+				this.setState({
+					loginSuccess: true
+				});
+			} else {
+				this.setState({
+					loginFailure: true
+				})
+			}
+		})
 	};
-	return(
+
+	render() {
+        const { handleSubmit, pristine, submitting } = this.props;
+        return (
 			<BodyClassName className="login-page">
 				<div className="login-form">
 					<div className="logo-wrapper">
-						<img src={logo} alt="Employment Options" />
+						<img src={logo} alt="Employment Options"/>
 					</div>
-					<form className="form-horizontal" onSubmit={handleSubmit(authenticate)} >
+					<form className="form-horizontal" onSubmit={handleSubmit(this.authenticate)}>
 						<div className="form-group">
-							<label className="col-sm-2 control-label" >Username: </label>
+							<label className="col-sm-2 control-label">Username: </label>
 							<div className="col-sm-6">
 								<Field
 									type="text"
 									component="input"
 									name="username"
-									className="form-control col-sm-10" />
+									className="form-control col-sm-10"/>
 							</div>
 						</div>
 						<div className="form-group">
@@ -50,12 +71,16 @@ const LoginForm  = (props) => {
 							</div>
 						</div>
 						<div className="button-wrapper">
-							<button className="btn btn-default" type="submit" disabled={pristine || submitting}>Submit</button>
+							<button className="btn btn-default" type="submit" disabled={pristine || submitting}>Submit
+							</button>
 						</div>
 					</form>
+				{this.state.loginSuccess && <Redirect to="/clients" push />}
+				{this.state.loginFailure && <Redirect to="/" />}
 				</div>
 			</BodyClassName>
-	)
+        )
+    }
 }
 
 export default reduxForm({form: 'login'})(LoginForm);

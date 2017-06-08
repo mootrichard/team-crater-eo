@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import MasterForm from './Components/MasterForm.js';
 import ClientData from './Components/ClientData.js';
 import LoginForm from './Components/LoginForm';
+import Logout from './Components/Logout';
 import {
   BrowserRouter as Router,
   Route
@@ -42,6 +43,7 @@ class App extends Component {
               <Route exact path="/" render={(props)=>{return (<LoginForm logIn={this.logIn} />)}} />
               <Route path="/masterform" component={MasterForm} />
               <Route path="/clients" component={ClientData} />
+              <Route path="/logout" component={Logout} />
             </div>
           </div>
         </Router>

@@ -11,7 +11,7 @@ class UserHeader extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     let _this = this;
     this.getCurrentUser =
       fetch(`/api/users/current/`, {
@@ -31,10 +31,6 @@ class UserHeader extends React.Component {
       .catch((error) => {
         console.error(error);
       });
-  }
-
-  componentWillUnmount() {
-    this.getCurrentUser.abort();
   }
 
   render() {
