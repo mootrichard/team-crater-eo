@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 const FinancialInfo = () => {
   return (
-    <div>
+    <div className="section">
       <div>
         <label htmlFor="consulted">Have you consulted a benefits professional?</label>
         <label><Field name="consulted" id="consulted" component="input" type="checkbox"/> Yes</label>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, FieldArray } from 'redux-form';
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
-  <div>
+  <div className="section">
     <label>{label}</label>
     <div>
       <input {...input} type={type} placeholder={label}/>

@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 const WorkPrefs = () => {
   return (
-    <div>
+    <div className="section">
       <div>
         <label htmlFor="fulltime">Full time</label>
         <Field name="fulltime" id="fulltime" component="input" type="checkbox"/>
@@ -18,7 +18,7 @@ const WorkPrefs = () => {
         <label htmlFor="expected_wage">Expected wage</label>
         <Field name="expected_wage" component="input" type="text"/>
       </div>
-      <div>
+      <div className="days">
         <label>What days of the week? &nbsp;</label>
         <label htmlFor="monday"> M</label>
         <Field name="monday" id="monday" component="input" type="checkbox"/>
@@ -35,7 +35,7 @@ const WorkPrefs = () => {
         <label htmlFor="sunday"> Su</label>
         <Field name="sunday" id="sunday" component="input" type="checkbox"/>
       </div>
-      <div>
+      <div className="hours">
         <label>What hours?&nbsp;&nbsp;</label>
         <label htmlFor="hours_days">&nbsp;Days </label>
         <Field name="hours_days" id="hours_days" component="input" type="checkbox"/>
@@ -44,7 +44,7 @@ const WorkPrefs = () => {
         <label htmlFor="hours_noc">&nbsp;NOC</label>
         <Field name="hours_noc" id="hours_noc" component="input" type="checkbox"/>
       </div>
-      <div>
+      <div className="inside-outside">
        <label>Where would you prefer to work?&nbsp;</label>
         <label htmlFor="inside">&nbsp;Inside</label>
         <Field name="inside" id="inside" component="input" type="checkbox"/>

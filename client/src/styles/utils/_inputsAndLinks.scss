@@ -47,11 +47,11 @@ label {
   font-size: 18px;
 }
 
-input[type="text"], input[type="email"], input[type="password"],input[type="tel"], input[type="number"], textarea, select {
+input[type="date"], input[type="text"], input[type="email"], input[type="password"],input[type="tel"], input[type="number"], textarea, select {
   @include browser-appearance(none);
-  border: 2px solid black;
+  border: 1px solid $eoPurple;
   border-radius: 0;
-  background: white;
+  background: $lightGray;
   padding: 10px;
   resize: none;
   width: 100%;

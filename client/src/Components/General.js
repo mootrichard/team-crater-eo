@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 const General = () => {
   return (
-    <div>
+    <div className="section">
       <div>
          <label htmlFor="date_avail">Date available for employment</label>
          <Field name="date_avail" component="input" type="date"/>

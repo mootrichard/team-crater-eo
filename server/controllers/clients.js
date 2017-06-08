@@ -236,7 +236,7 @@ module.exports = {
   getAll(req, res) {
     return Client
         .all()
-        .then(clients => res.status(200).send(clients))
+        .then(clients => res.status(200).send(JSON.stringify(clients)))
         .catch(error => res.status(400).send(error));
   },
 

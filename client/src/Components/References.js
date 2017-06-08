@@ -21,7 +21,7 @@ const renderRefs = ({ fields, meta: { touched, error } }) => {
             type="button"
             title="Remove reference"
             onClick={() => fields.remove(index)}>Remove Reference #{index + 1}</button>
-            <div>
+            <div className="personal-or-business">
     					<Field
     							name={`${reference}.ref_type`}
     							type="radio"
@@ -64,7 +64,7 @@ const renderRefs = ({ fields, meta: { touched, error } }) => {
         </li>
       )}
       <li>
-        <button type="button" onClick={() => fields.push({})}>+ Add Reference</button>
+        <button className="add-section" type="button" onClick={() => fields.push({})}>+ Add Reference</button>
         {touched && error && <span>{error}</span>}
       </li>
     </ul>

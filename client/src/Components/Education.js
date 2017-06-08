@@ -4,8 +4,8 @@ import selectState from './SelectState';
 
 const Education = () => {
   return (
-    <div>
-      <div>
+    <div className="section">
+      <div className="section">
         <h3>School</h3>
         <div>
           <label htmlFor="school_name">School name</label>
@@ -44,7 +44,7 @@ const Education = () => {
             <Field name="sch_zip" component="input" type="text"/>
           </div>
         </div>
-      <div>
+      <div className="section">
         <h3>College</h3>
         <div>
           <label htmlFor="col_name">College name</label>
@@ -79,7 +79,7 @@ const Education = () => {
         </div>
       </div>
 
-      <div>
+      <div className="section">
         <h3>Vocational/Specialized Training</h3>
         <div>
           <label htmlFor="voc_cert_name">Qualification/Certificate</label>
@@ -88,6 +88,6 @@ const Education = () => {
       </div>
     </div>
   )
-}
+};
 
 export default Education

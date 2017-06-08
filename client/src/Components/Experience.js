@@ -2,14 +2,14 @@ import React from 'react';
 import { Field, FieldArray } from 'redux-form';
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
-  <div>
+  <div className="section">
     <label>{label}</label>
     <div>
       <input {...input} type={type} placeholder={label}/>
       {touched && error && <span>{error}</span>}
     </div>
   </div>
-)
+);
 
 const renderTask = ({ fields, meta: { touched, error } }) => {
   return (
@@ -27,11 +27,11 @@ const renderTask = ({ fields, meta: { touched, error } }) => {
         </li>
       )}
       <li>
-        <button type="button" onClick={() => fields.push({})}>+ Add Task</button>
+        <button className="add-section task" type="button" onClick={() => fields.push({})}>+ Add Task</button>
       </li>
     </ul>
   )
-}
+};
 
 const renderExperience = ({ fields, meta: { touched, error } }) => {
   return (
@@ -87,11 +87,11 @@ const renderExperience = ({ fields, meta: { touched, error } }) => {
         </li>
       )}
       <li>
-        <button type="button" onClick={() => fields.push({})}>+ Add Experience</button>
+        <button className="add-section" type="button" onClick={() => fields.push({})}>+ Add Experience</button>
         {touched && error && <span>{error}</span>}
       </li>
     </ul>
   )
-}
+};
 
 export default renderExperience
