@@ -24,7 +24,6 @@ class UserHeader extends React.Component {
       })
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson);
         _this.setState({
           name: responseJson.first_name
         })

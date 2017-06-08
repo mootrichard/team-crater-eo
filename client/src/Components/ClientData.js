@@ -41,18 +41,7 @@ let ClientData = (props) => {
       <UserHeader />
       <div className="container flexbox">
         <UserNavBar />
-        <form onSubmit={handleSubmit(displayData)}>
-          <div>
-            <label>Choose a client: </label>
-            <div>
-              <Field name="client_select" component={ClientSelector}></Field>
-            </div>
-            {indexValue}
-            <div>
-              <button type="submit">Submit</button>
-            </div>
-          </div>
-        </form>
+        <ClientSelector />
       </div>
     </div>
   );
