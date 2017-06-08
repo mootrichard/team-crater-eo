@@ -13,7 +13,7 @@ const getResume = (id) =>{
   })
   .then((response) => response.json())
   .then((responseJson) => {
-    console.log(JSON.stringify(responseJson));
+    createResume(JSON.stringify(responseJson));
   });
 };
 

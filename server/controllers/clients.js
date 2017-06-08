@@ -254,6 +254,28 @@ module.exports = {
           return res.status(200).send(client);
         })
         .catch(error => res.status(400).send(error));
+  },
+
+  getOneAll(req, res) {
+    return Client
+        .findOne({
+          where: {
+            id: req.params.clientId
+          },
+          include: [{
+            all: true,
+            nested: true,
+            required: false
+          }]
+        }).then(client => {
+          if (!client) {
+            return res.status(404).send({
+              message: 'Client Not Found'
+            });
+          }
+          return res.status(200).send(client);
+        })
+        .catch(error => res.status(400).send(error));
   }
 };
 
