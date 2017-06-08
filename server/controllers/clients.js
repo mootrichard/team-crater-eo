@@ -244,7 +244,7 @@ module.exports = {
 
   getOne(req, res) {
     return Client
-        .findByPrimary(req.params.id)
+        .findByPrimary(req.params.clientId)
         .then(client => {
           if (!client) {
             return res.status(404).send({
