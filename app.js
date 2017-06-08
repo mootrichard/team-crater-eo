@@ -9,12 +9,6 @@ const session = require('express-session');
 const passport = require('passport');
 require('./server/config/passport')(passport);
 
-
-const index = require('./routes/index');
-const users = require('./routes/users');
-const login = require('./routes/login');
-const masterform = require('./routes/masterform');
-const clients = require('./routes/clients');
 const routes = require('./server/router/index');
 
 const app = express();
