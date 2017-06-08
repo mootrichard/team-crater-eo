@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, FieldArray } from 'redux-form';
+import renderTask from './JobTasks'
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
   <div className="section">
@@ -11,27 +12,6 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
   </div>
 );
 
-const renderTask = ({ fields, meta: { touched, error } }) => {
-  return (
-    <ul>
-      {fields.map((task, index) =>
-        <li key={index}>
-          <button
-            type="button"
-            title="Remove skill"
-            onClick={() => fields.remove(index)}>Remove Task</button>
-          <Field
-            name={task}
-            type="text"
-            component={renderField}/>
-        </li>
-      )}
-      <li>
-        <button className="add-section task" type="button" onClick={() => fields.push({})}>+ Add Task</button>
-      </li>
-    </ul>
-  )
-};
 
 const renderExperience = ({ fields, meta: { touched, error } }) => {
   return (

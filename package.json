@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "build": "cd client && npm run build && cd .. && cp -r ./client/build/* ./public",
     "client": "cd client && npm start",
-    "dev": "concurrently \"export NODE_ENV=test && env PORT=3001 nodemon ./bin/www\" \"npm run client\""
+    "dev": "concurrently \"export NODE_ENV=development && env PORT=3001 nodemon ./bin/www\" \"npm run client\""
   },
   "dependencies": {
     "bcrypt": "^1.0.2",

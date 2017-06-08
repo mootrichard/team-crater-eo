@@ -23,6 +23,7 @@ class ClientData extends Component {
       let first_name = document.createElement('td');
       let last_name = document.createElement('td');
       let dob = document.createElement('td');
+      let resume = document.createElement('td');
       let reg_date_moment = moment(arr[index].registration_date);
       reg_date.innerHTML = reg_date_moment.format('MM/DD/YY');
       first_name.innerHTML = arr[index].first_name;
@@ -33,6 +34,7 @@ class ClientData extends Component {
       row.appendChild(first_name);
       row.appendChild(last_name);
       row.appendChild(dob);
+      row.appendChild(resume);
       row.setAttribute('data-id', arr[index].id);
       row.onclick = function() {console.log(this.getAttribute('data-id'))};
       document.getElementById("client-table-body").appendChild(row);
@@ -64,6 +66,7 @@ class ClientData extends Component {
               <th>First Name</th>
               <th>Last Name</th>
               <th>DOB</th>
+              <th>Resume</th>
             </tr>
           </thead>
           <tbody id="client-table-body">
