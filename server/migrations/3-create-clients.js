@@ -149,6 +149,9 @@ module.exports = {
       profile: {
         type: Sequelize.TEXT
       },
+      interests: {
+        type: Sequelize.TEXT
+      },
       key_skills: {
         type: Sequelize.JSON
       },

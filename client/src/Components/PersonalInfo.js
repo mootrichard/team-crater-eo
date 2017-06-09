@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 const PersonalInfo = () => {
   return (
-    <div>
+    <div className="section">
       <div>
         <label htmlFor="resume">Do you have a resume?</label>
         <label><Field name="resume" id="resume" component="input" value="true" type="radio"/> Yes</label>

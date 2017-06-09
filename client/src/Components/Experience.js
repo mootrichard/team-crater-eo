@@ -1,37 +1,17 @@
 import React from 'react';
 import { Field, FieldArray } from 'redux-form';
+import renderTask from './JobTasks'
 
 const renderField = ({ input, label, type, meta: { touched, error } }) => (
-  <div>
+  <div className="section">
     <label>{label}</label>
     <div>
       <input {...input} type={type} placeholder={label}/>
       {touched && error && <span>{error}</span>}
     </div>
   </div>
-)
+);
 
-const renderTask = ({ fields, meta: { touched, error } }) => {
-  return (
-    <ul>
-      {fields.map((task, index) =>
-        <li key={index}>
-          <button
-            type="button"
-            title="Remove skill"
-            onClick={() => fields.remove(index)}>Remove Task</button>
-          <Field
-            name={task}
-            type="text"
-            component={renderField}/>
-        </li>
-      )}
-      <li>
-        <button type="button" onClick={() => fields.push({})}>+ Add Task</button>
-      </li>
-    </ul>
-  )
-}
 
 const renderExperience = ({ fields, meta: { touched, error } }) => {
   return (
@@ -58,6 +38,11 @@ const renderExperience = ({ fields, meta: { touched, error } }) => {
             type="text"
             component={renderField}
             label="Location"/>
+          <Field
+            name={`${experience}.description`}
+            type="text"
+            component={renderField}
+            label="Brief description"/>
           <Field
             name={`${experience}.emp_start`}
             type="date"
@@ -87,11 +72,11 @@ const renderExperience = ({ fields, meta: { touched, error } }) => {
         </li>
       )}
       <li>
-        <button type="button" onClick={() => fields.push({})}>+ Add Experience</button>
+        <button className="add-section" type="button" onClick={() => fields.push({})}>+ Add Experience</button>
         {touched && error && <span>{error}</span>}
       </li>
     </ul>
   )
-}
+};
 
 export default renderExperience

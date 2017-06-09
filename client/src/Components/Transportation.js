@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 const Transportation = () => {
   return (
-    <div>
+    <div className="section">
       <div>
         <label htmlFor="license">Do you have a drivers license?</label>
         <label><Field name="license" id="license" component="input" value="true" type="radio"/> Yes</label>

@@ -26,7 +26,7 @@ module.exports = {
       street_address_two: formData.street2,
       apt_num: formData.apt_num,
       city: formData.city,
-      state: formData.state,
+      state: formData.cli_state,
       zip: formData.zip,
       po_box: formData.po_box
     })
@@ -80,10 +80,11 @@ module.exports = {
             can_complete_online_app: formData.online_app,
             can_complete_paper_app: formData.paper_app,
             goal: formData.emp_goal,
-            profile: formData.profess_profile,
             meeting_venue: formData.venue,
             barriers: formData.barriers,
             notes: formData.notes,
+            profile: formData.profess_profile,
+            interests: formData.interests,
             key_skills: keySkilsJSON
 
           })
@@ -189,6 +190,7 @@ module.exports = {
                 let tasksJSON = JSON.stringify(exp.tasks);
                 EmploymentDetail.create({
                   organization: exp.org_name,
+                  description: exp.description,
                   job_title: exp.pos_name,
                   location: exp.loc,
                   job_duties: tasksJSON,
@@ -236,14 +238,36 @@ module.exports = {
   getAll(req, res) {
     return Client
         .all()
-        .then(clients => res.status(200).send(clients))
+        .then(clients => res.status(200).send(JSON.stringify(clients)))
         .catch(error => res.status(400).send(error));
   },
 
   getOne(req, res) {
     return Client
-        .findByPrimary(req.params.id)
+        .findByPrimary(req.params.clientId)
         .then(client => {
+          if (!client) {
+            return res.status(404).send({
+              message: 'Client Not Found'
+            });
+          }
+          return res.status(200).send(client);
+        })
+        .catch(error => res.status(400).send(error));
+  },
+
+  getOneAll(req, res) {
+    return Client
+        .findOne({
+          where: {
+            id: req.params.clientId
+          },
+          include: [{
+            all: true,
+            nested: true,
+            required: false
+          }]
+        }).then(client => {
           if (!client) {
             return res.status(404).send({
               message: 'Client Not Found'

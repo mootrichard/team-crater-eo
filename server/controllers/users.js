@@ -29,5 +29,23 @@ module.exports = {
           .then(user => res.status(201).send(user))
           .catch(error => res.status(400).send(error));
     });
+  },
+
+  getCurrent(req, res) {
+    if (req.user && req.user.id) {
+      return User
+          .findByPrimary(req.user.id)
+          .then(user => {
+            if (!user) {
+              return res.status(404).send({
+                message: 'User Not Found'
+              });
+            }
+            return res.status(200).send(JSON.stringify(user));
+          })
+          .catch(error => res.status(400).send(error));
+    }
   }
+
+
 };
