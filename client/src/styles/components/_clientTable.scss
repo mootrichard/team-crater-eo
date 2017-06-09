@@ -33,6 +33,17 @@
 
   thead {
     background-color: #9973b0;
+
+    tr {
+      th:first-of-type {
+        border-top-left-radius: 10px;
+      }
+
+      &:hover {
+        background-color: #9973b0;
+        cursor: default;
+      }
+    }
   }
 
   tr:nth-of-type(even) {

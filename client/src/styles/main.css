@@ -264,6 +264,11 @@ h4 {
     text-align: left; }
   .clients-table thead {
     background-color: #9973b0; }
+    .clients-table thead tr th:first-of-type {
+      border-top-left-radius: 10px; }
+    .clients-table thead tr:hover {
+      background-color: #9973b0;
+      cursor: default; }
   .clients-table tr:nth-of-type(even) {
     background-color: #C8D2E4; }
   .clients-table tr:hover {
