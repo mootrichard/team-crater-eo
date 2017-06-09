@@ -174,7 +174,7 @@ h4 {
   padding-bottom: 60px; }
   .master-form .choose-resume-type {
     width: auto; }
-  .master-form input, .master-form select {
+  .master-form input, .master-form select, .master-form textarea {
     max-width: 600px;
     font-size: 16px;
     font-family: "Open Sans Condensed", sans-serif; }

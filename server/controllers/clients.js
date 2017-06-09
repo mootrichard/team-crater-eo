@@ -26,7 +26,7 @@ module.exports = {
       street_address_two: formData.street2,
       apt_num: formData.apt_num,
       city: formData.city,
-      state: formData.state,
+      state: formData.cli_state,
       zip: formData.zip,
       po_box: formData.po_box
     })
