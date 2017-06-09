@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const EmploymentDetail = sequelize.define('EmploymentDetail', {
     organization: { type: DataTypes.STRING },
     job_title: { type: DataTypes.STRING },
+    description: { type: DataTypes.STRING},
     location: { type: DataTypes.STRING },
     job_duties: { type: DataTypes.JSON },
     pay: { type: DataTypes.STRING },
